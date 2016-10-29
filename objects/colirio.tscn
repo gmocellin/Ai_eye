@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://objects/coliriocor.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[node name="Colirio" type="Area2D"]
+
+transform/pos = Vector2( 25, 25 )
+transform/scale = Vector2( 0.78125, 0.78125 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 2.46154, 0, 0, 2.46154, -1.43051e-06, -1.43051e-06 )
+shapes/0/trigger = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( -0.323232, -0.323232 )
+transform/scale = Vector2( 0.646465, 0.646465 )
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( -1.43051e-06, -1.43051e-06 )
+transform/scale = Vector2( 2.46154, 2.46154 )
+shape = SubResource( 1 )
+trigger = true
+_update_shape_index = 0
+
+

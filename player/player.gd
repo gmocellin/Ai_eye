@@ -31,3 +31,8 @@ func _fixed_process(delta):
 		delta_mov = n.slide(delta_mov)
 		velocity = n.slide(velocity)
 		move(delta_mov)
+
+func _on_Colirio_body_enter(body, nomeColir):
+	get_node("Camera2D/EfeitoOlho").reset()
+	var colir = get_node('../' + nomeColir)
+	colir.queue_free()
