@@ -36,14 +36,6 @@ func _on_Colirio_body_enter(body, nomeColir):
 	get_node("Camera2D/EfeitoOlho").reset()
 	var colir = get_node('../' + nomeColir)
 	colir.queue_free()
-
-func _on_colirio_2_body_enter( body ):
-	pass # replace with function body
-
-
-func _on_colirio_3_body_enter( body ):
-	pass # replace with function body
-
-
-func _on_colirio_4_body_enter( body ):
-	pass # replace with function body
+	
+func _on_Porta_body_enter(body):
+	pass
