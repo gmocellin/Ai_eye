@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://olhoFecha/bg.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node2D\n\nexport var segundos = 0\nconst altura = 300\nvar total = 0\nvar inc\n\nfunc _ready():\n\tinc = altura / segundos\n\tset_process(true)\n\nfunc _process(delta):\n\ttotal += delta\n\tget_node(\"DeCima\").move_local_y(delta * inc)\n\tget_node(\"DeBaixo\").move_local_y(-delta * inc)\n\tif total >= segundos:\n\t\tset_process(false)"
+
+[node name="EfeitoOlho" type="Node2D"]
+
+script/script = SubResource( 1 )
+segundos = 50
+
+[node name="DeCima" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, -300 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="DeBaixo" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 300 )
+texture = ExtResource( 1 )
+centered = false
+flip_v = true
+
+
