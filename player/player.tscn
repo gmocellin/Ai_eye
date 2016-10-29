@@ -58,7 +58,6 @@ drag_margin/bottom = 0.2
 [node name="EfeitoOlho" parent="Camera2D" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 2.64076, 0.880257 )
-vel = 50
 
 [node name="Area2D" type="Area2D" parent="."]
 

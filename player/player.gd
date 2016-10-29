@@ -15,13 +15,13 @@ func _fixed_process(delta):
 	var velocity = Vector2()
 	var delta_mov = Vector2()
 	
-	if (Input.is_action_pressed("move_up")):
+	if (Input.is_action_pressed("ui_up")):
 		delta_mov.y += -SPEED * delta
-	if (Input.is_action_pressed("move_down")):
+	if (Input.is_action_pressed("ui_down")):
 		delta_mov.y += SPEED * delta
-	if (Input.is_action_pressed("move_left")):
+	if (Input.is_action_pressed("ui_left")):
 		delta_mov.x += -SPEED * delta
-	if (Input.is_action_pressed("move_right")):
+	if (Input.is_action_pressed("ui_right")):
 		delta_mov.x += SPEED * delta
 	
 	move(delta_mov)

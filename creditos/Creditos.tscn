@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://creditos/grupo.png" type="Texture" id=1]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ { "frames":[ ExtResource( 1 ) ], "loop":false, "name":"default", "speed":5.0 } ]
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends AnimatedSprite\n\nexport var tempoSeg = 10\nexport var tempoFade = 2\nvar fadeIni\nvar tempo = 0\nvar atual = 0\n\nfunc _ready():\n\tfadeIni = tempoSeg - tempoFade\n\tset_process(true)\n\tset_process_input(true)\n\nfunc _process(delta):\n\ttempo += delta\n\tif tempo < tempoFade:\n\t\tset_opacity(tempo / tempoFade)\n\telif tempo > tempoSeg:\n\t\ttempo = 0\n\t\tatual += 1\n\t\tif atual == 1:\n\t\t\tset_frame(atual)\n\t\telse:\n\t\t\tproximooo()\n\telif tempo > fadeIni:\n\t\tset_opacity(1 - (tempo - fadeIni) / tempoFade)\n\nfunc _input(event):\n\tif event.type in [InputEvent.KEY, InputEvent.MOUSE_BUTTON\n\t\t\t, InputEvent.JOYSTICK_BUTTON, InputEvent.SCREEN_TOUCH]:\n\t\tproximooo()\n\nfunc proximooo():\n\tget_tree().change_scene(\"res://menu/menu.tscn\")"
+
+[node name="AnimatedSprite" type="AnimatedSprite"]
+
+frames = SubResource( 1 )
+animation = "default"
+centered = false
+script/script = SubResource( 2 )
+tempoSeg = 5
+tempoFade = 1
+
+
