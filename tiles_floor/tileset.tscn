@@ -53,7 +53,6 @@ region_rect = Rect2( 0, 0, 50, 50 )
 
 [node name="muro_reta_1" type="Sprite" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( -175, -175 )
 texture = ExtResource( 2 )
 region = true
