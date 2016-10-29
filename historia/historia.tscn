@@ -1,0 +1,28 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://historia/historia 1.png" type="Texture" id=1]
+[ext_resource path="res://historia/historia 2.png" type="Texture" id=2]
+[ext_resource path="res://historia/historia 3.png" type="Texture" id=3]
+[ext_resource path="res://historia/historia 4.png" type="Texture" id=4]
+[ext_resource path="res://historia/instruções.png" type="Texture" id=5]
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends Node2D\n\nexport var tempos = [5, 10, 15, 20]\n# contadores do tempo e frame atual\nvar tempo = 0\nvar atual = 0\n\nfunc _ready():\n\tset_process(true)\n\tset_process_input(true)\n\nfunc _process(delta):\n\ttempo += delta\n\tif tempo > tempos[atual]:\n\t\tatual += 1\n\t\tget_node(\"Quadros\").set_frame(atual)\n\t\tif atual >= tempos.size():\n\t\t\tset_process(false)\n\nfunc _input(event):\n\tif event.type in [InputEvent.KEY, InputEvent.MOUSE_BUTTON\n\t\t\t, InputEvent.JOYSTICK_BUTTON, InputEvent.SCREEN_TOUCH]:\n\t\tget_tree().change_scene(\"res://menu/menu.tscn\")"
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ { "frames":[ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ], "loop":false, "name":"Historia", "speed":5.0 } ]
+
+[node name="Historia" type="Node2D"]
+
+script/script = SubResource( 2 )
+tempos = [ 5, 10, 15, 20 ]
+
+[node name="Quadros" type="AnimatedSprite" parent="."]
+
+frames = SubResource( 1 )
+animation = "Historia"
+centered = false
+
+
