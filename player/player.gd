@@ -20,8 +20,10 @@ func _fixed_process(delta):
 	if (Input.is_action_pressed("ui_down")):
 		delta_mov.y += SPEED * delta
 	if (Input.is_action_pressed("ui_left")):
+		get_node("player").set_flip_h(true)
 		delta_mov.x += -SPEED * delta
 	if (Input.is_action_pressed("ui_right")):
+		get_node("player").set_flip_h(false)
 		delta_mov.x += SPEED * delta
 	
 	move(delta_mov)

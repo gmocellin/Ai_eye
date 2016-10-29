@@ -1,16 +1,37 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
-[ext_resource path="res://tiles_floor/tileset01.res" type="TileSet" id=1]
-[ext_resource path="res://objects/portacheiaquadrada.png" type="Texture" id=2]
-[ext_resource path="res://objects/colirio.tscn" type="PackedScene" id=3]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://mapas/abreMapa.gd" type="Script" id=1]
+[ext_resource path="res://tiles_floor/tileset01.res" type="TileSet" id=2]
+[ext_resource path="res://objects/portacheiaquadrada.png" type="Texture" id=3]
+[ext_resource path="res://objects/colirio.tscn" type="PackedScene" id=4]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=5]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Camera2D"]
+
+anchor_mode = 0
+rotating = false
+current = true
+zoom = Vector2( 4, 4 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = false
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+script/script = ExtResource( 1 )
+tempoFase = 15
+tempoVer = 2
 
 [node name="TileMap" type="TileMap" parent="."]
 
 mode = 0
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 2 )
 cell/size = Vector2( 50, 50 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 0, 0, 0, 0, 0, 0 )
@@ -29,55 +50,56 @@ tile_data = IntArray( -589834, 0, -589833, 0, -589832, 0, -589831, 0, -589830, 0
 
 transform/pos = Vector2( 127.029, 124.665 )
 transform/scale = Vector2( 0.216223, 0.219434 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
-[node name="Colirio_1" parent="." instance=ExtResource( 3 )]
+[node name="Colirio_1" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 2475, 1225 )
 
-[node name="Colirio_2" parent="." instance=ExtResource( 3 )]
+[node name="Colirio_2" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1175, 975 )
 
-[node name="Colirio_3" parent="." instance=ExtResource( 3 )]
+[node name="Colirio_3" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 2275, 725 )
 
-[node name="Colirio_4" parent="." instance=ExtResource( 3 )]
+[node name="Colirio_4" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1125, 125 )
 
-[node name="Colirio_5" parent="." instance=ExtResource( 3 )]
+[node name="Colirio_5" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 975, 1425 )
 
-[node name="Colirio_6" parent="." instance=ExtResource( 3 )]
+[node name="Colirio_6" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 3075, 425 )
 
-[node name="Colirio_7" parent="." instance=ExtResource( 3 )]
+[node name="Colirio_7" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 975, 1975 )
 
-[node name="Colirio_8" parent="." instance=ExtResource( 3 )]
+[node name="Colirio_8" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 2475, 2175 )
 
-[node name="Colirio_9" parent="." instance=ExtResource( 3 )]
+[node name="Colirio_9" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 2875, 1875 )
 
-[node name="player" parent="." instance=ExtResource( 4 )]
+[node name="player" parent="." instance=ExtResource( 5 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 1582, 1132 )
+
+[node name="player" parent="player"]
+
+frame = 1
 
 [node name="Camera2D" parent="player"]
 
-editor/display_folded = false
-
-[node name="EfeitoOlho" parent="player/Camera2D"]
-
-segundos = 30
+current = false
 
 [connection signal="body_enter" from="Colirio_1" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_1" ]]
 
