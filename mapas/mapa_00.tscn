@@ -43,10 +43,4 @@ transform/scale = Vector2( 0.50505, 0.50505 )
 texture = ExtResource( 4 )
 script/script = ExtResource( 5 )
 
-[node name="colirio_2" type="Sprite" parent="."]
-
-transform/pos = Vector2( 524.747, 574.747 )
-transform/scale = Vector2( 0.50505, 0.50505 )
-texture = ExtResource( 4 )
-
 
