@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://tiles_floor/tileset01.res" type="TileSet" id=1]
 [ext_resource path="res://objects/portacheiaquadrada.png" type="Texture" id=2]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/colirio.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
 
@@ -30,9 +31,47 @@ transform/pos = Vector2( 1275, 125 )
 transform/scale = Vector2( 0.18797, 0.18797 )
 texture = ExtResource( 2 )
 
-[node name="player" parent="." instance=ExtResource( 3 )]
+[node name="Colirio_1" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1175, 925 )
+
+[node name="Colirio_2" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 325, 325 )
+
+[node name="Colirio_3" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 325, 925 )
+
+[node name="Colirio_4" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1075, 1125 )
+
+[node name="Colirio_5" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 925, 525 )
+
+[node name="player" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 132, 732 )
-transform/scale = Vector2( 1, 1 )
+
+[node name="Camera2D" parent="player"]
+
+editor/display_folded = false
+
+[node name="EfeitoOlho" parent="player/Camera2D"]
+
+segundos = 10
+
+[connection signal="body_enter" from="Colirio_1" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_1" ]]
+
+[connection signal="body_enter" from="Colirio_2" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_2" ]]
+
+[connection signal="body_enter" from="Colirio_3" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_3" ]]
+
+[connection signal="body_enter" from="Colirio_4" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_4" ]]
+
+[connection signal="body_enter" from="Colirio_5" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_5" ]]
 
 
+[editable path="player"]

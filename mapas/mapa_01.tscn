@@ -49,7 +49,7 @@ transform/pos = Vector2( 1125, 125 )
 
 [node name="Colirio_5" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 475, 1675 )
+transform/pos = Vector2( 975, 1425 )
 
 [node name="Colirio_6" parent="." instance=ExtResource( 3 )]
 
@@ -61,7 +61,11 @@ transform/pos = Vector2( 975, 1975 )
 
 [node name="Colirio_8" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 975, 1975 )
+transform/pos = Vector2( 2475, 2175 )
+
+[node name="Colirio_9" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 2875, 1875 )
 
 [node name="player" parent="." instance=ExtResource( 4 )]
 
@@ -90,6 +94,8 @@ segundos = 30
 [connection signal="body_enter" from="Colirio_7" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_7" ]]
 
 [connection signal="body_enter" from="Colirio_8" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_8" ]]
+
+[connection signal="body_enter" from="Colirio_9" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_9" ]]
 
 
 [editable path="player"]
