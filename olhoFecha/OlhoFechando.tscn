@@ -4,12 +4,11 @@
 
 [sub_resource type="GDScript" id=1]
 
-script/source = "extends Node2D\n\n# alturas iniciais das barras\nconst altura = 300\nvar cima; var baixo\n# tempo total que dura\nexport var segundos = 0\nvar total = 0\nvar inc\n# volta\nvar voltando\nvar vel\n\nfunc _ready():\n\tinc = altura / segundos\n\tadd_user_signal(\'reset\')\n\tcima = get_node(\"DeCima\")\n\tbaixo = get_node(\"DeBaixo\")\n\tvoltando = false\n\tset_process(true)\n\nfunc _process(delta):\n\t# se voltando, só sobe em velocidade constante\n\tif not voltando:\n\t\ttotal += delta\n\t\tcima.move_local_y(delta * inc)\n\t\tbaixo.move_local_y(-delta * inc)\n\t\tif total >= segundos:\n\t\t\tset_process(false)\n\telse:\n\t\tcima.move_local_y(-delta * vel)\n\t\tbaixo.move_local_y(delta * vel)\n\t\tif cima.get_pos().y < -altura:\n\t\t\tvoltando = false\n\nfunc reset():\n\ttotal = 0\n\tvel = cima.get_pos().y + 800\n\tvoltando = true"
+script/source = "extends Node2D\n\n# alturas iniciais das barras\nconst altura = 300\nvar cima; var baixo\n# tempo total que dura\nvar segundos\nvar total = 0\nvar inc\n# volta\nvar voltando\nvar vel\n\nfunc comeca(tempo):\n\tsegundos = tempo\n\tinc = altura / segundos\n\tadd_user_signal(\'reset\')\n\tcima = get_node(\"DeCima\")\n\tbaixo = get_node(\"DeBaixo\")\n\tvoltando = false\n\tshow()\n\tset_process(true)\n\nfunc _process(delta):\n\t# se voltando, só sobe em velocidade constante\n\tif not voltando:\n\t\ttotal += delta\n\t\tcima.move_local_y(delta * inc)\n\t\tbaixo.move_local_y(-delta * inc)\n\t\tif total >= segundos:\n\t\t\tset_process(false)\n\telse:\n\t\tcima.move_local_y(-delta * vel)\n\t\tbaixo.move_local_y(delta * vel)\n\t\tif cima.get_pos().y < -altura:\n\t\t\tvoltando = false\n\nfunc reset():\n\ttotal = 0\n\tvel = cima.get_pos().y + 800\n\tvoltando = true"
 
 [node name="EfeitoOlho" type="Node2D"]
 
 script/script = SubResource( 1 )
-segundos = 50
 
 [node name="DeCima" type="Sprite" parent="."]
 
