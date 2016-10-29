@@ -14,14 +14,14 @@ segundos = 50
 [node name="DeCima" type="Sprite" parent="."]
 
 transform/pos = Vector2( 0, -300 )
+transform/scale = Vector2( 1.02, 1 )
 texture = ExtResource( 1 )
-centered = false
 
 [node name="DeBaixo" type="Sprite" parent="."]
 
 transform/pos = Vector2( 0, 300 )
+transform/scale = Vector2( 1.02, 1 )
 texture = ExtResource( 1 )
-centered = false
 flip_v = true
 
 
