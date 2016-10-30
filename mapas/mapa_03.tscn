@@ -85,7 +85,7 @@ transform/pos = Vector2( 532, 532 )
 
 [node name="player" parent="player"]
 
-frame = 0
+frame = 3
 
 [node name="Camera2D" parent="player"]
 

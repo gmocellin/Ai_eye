@@ -72,7 +72,7 @@ transform/pos = Vector2( 3075, 425 )
 
 [node name="Colirio_7" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 975, 1975 )
+transform/pos = Vector2( 1825, 125 )
 
 [node name="Colirio_8" parent="." instance=ExtResource( 3 )]
 
@@ -97,7 +97,7 @@ transform/pos = Vector2( 1582, 1132 )
 
 [node name="player" parent="player"]
 
-frame = 2
+frame = 1
 
 [node name="Camera2D" parent="player"]
 
