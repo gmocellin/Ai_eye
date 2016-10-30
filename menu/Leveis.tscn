@@ -6,7 +6,7 @@
 
 [sub_resource type="GDScript" id=1]
 
-script/source = "extends Panel\n\n# bool pra mutar o jogo\nvar botoes\nvar atual = 0\n\nfunc _ready():\n\tbotoes = [get_node(\"01\"), get_node(\"02\"), get_node(\"03\"), get_node(\"04\"), get_node(\"05\"), get_node(\"Voltar\")]\n\tset_process_input(true)\n\nfunc _on_Sair():\n\tget_tree().quit()\n\nfunc _input(event):\n\tif event.is_action_pressed(\"ui_up\"):\n\t\tif(atual == 0):\n\t\t\tatual = botoes.size()-1\n\t\telse:\n\t\t\tatual -= 1\n\t\tbotoes[atual].emit_signal(\'mouse_enter\')\n\telif event.is_action_pressed(\"ui_down\"):\n\t\tif(atual == botoes.size() - 1):\n\t\t\tatual = 0\n\t\telse:\n\t\t\tatual += 1\n\t\tbotoes[atual].emit_signal(\'mouse_enter\')\n\telif event.is_action_pressed(\"ui_accept\"):\n\t\tbotoes[atual].emit_signal(\'pressed\')\n\nfunc _on_Voltar():\n\tget_tree().change_scene(\"res://menu/menu.tscn\")\n\nfunc _on_01():\n\tpass\nfunc _on_02():\n\tpass\nfunc _on_03():\n\tpass\nfunc _on_04():\n\tpass\nfunc _on_05():\n\tpass"
+script/source = "extends Panel\n\n# bool pra mutar o jogo\nvar botoes\nvar atual = 0\n\nfunc _ready():\n\tbotoes = [get_node(\"01\"), get_node(\"02\"), get_node(\"03\"), get_node(\"04\"), get_node(\"05\"), get_node(\"Voltar\")]\n\tset_process_input(true)\n\nfunc _on_Sair():\n\tget_tree().quit()\n\nfunc _input(event):\n\tif event.is_action_pressed(\"ui_up\"):\n\t\tif(atual == 0):\n\t\t\tatual = botoes.size()-1\n\t\telse:\n\t\t\tatual -= 1\n\t\tbotoes[atual].emit_signal(\'mouse_enter\')\n\telif event.is_action_pressed(\"ui_down\"):\n\t\tif(atual == botoes.size() - 1):\n\t\t\tatual = 0\n\t\telse:\n\t\t\tatual += 1\n\t\tbotoes[atual].emit_signal(\'mouse_enter\')\n\telif event.is_action_pressed(\"ui_accept\"):\n\t\tbotoes[atual].emit_signal(\'pressed\')\n\nfunc _on_Voltar():\n\tget_tree().change_scene(\"res://menu/menu.tscn\")\n\nfunc _on_01():\n\tget_node(\"/root/gerente\").comecaJogo(0)\n\nfunc _on_02():\n\tget_node(\"/root/gerente\").comecaJogo(2)\n\t\nfunc _on_03():\n\tget_node(\"/root/gerente\").comecaJogo(3)\n\t\nfunc _on_04():\n\tget_node(\"/root/gerente\").comecaJogo(4)\n\t\nfunc _on_05():\n\tget_node(\"/root/gerente\").comecaJogo(1)"
 
 [node name="Leveis" type="Panel"]
 
@@ -136,20 +136,30 @@ transform/pos = Vector2( 150, 250 )
 
 [connection signal="mouse_exit" from="01" to="Olhim" method="_on_mouse_exit"]
 
+[connection signal="pressed" from="01" to="." method="_on_01"]
+
 [connection signal="mouse_enter" from="02" to="Olhim" method="_on_mouse_enter" binds= [ Vector2( 250, 250 ) ]]
 
 [connection signal="mouse_exit" from="02" to="Olhim" method="_on_mouse_exit"]
+
+[connection signal="pressed" from="02" to="." method="_on_02"]
 
 [connection signal="mouse_enter" from="03" to="Olhim" method="_on_mouse_enter" binds= [ Vector2( 350, 250 ) ]]
 
 [connection signal="mouse_exit" from="03" to="Olhim" method="_on_mouse_exit"]
 
+[connection signal="pressed" from="03" to="." method="_on_03"]
+
 [connection signal="mouse_enter" from="04" to="Olhim" method="_on_mouse_enter" binds= [ Vector2( 450, 250 ) ]]
 
 [connection signal="mouse_exit" from="04" to="Olhim" method="_on_mouse_exit"]
 
+[connection signal="pressed" from="04" to="." method="_on_04"]
+
 [connection signal="mouse_enter" from="05" to="Olhim" method="_on_mouse_enter" binds= [ Vector2( 550, 250 ) ]]
 
 [connection signal="mouse_exit" from="05" to="Olhim" method="_on_mouse_exit"]
+
+[connection signal="pressed" from="05" to="." method="_on_05"]
 
 

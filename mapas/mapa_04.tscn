@@ -60,7 +60,7 @@ transform/pos = Vector2( 1225, 225 )
 
 [node name="Colirio_3" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 525, 325 )
+transform/pos = Vector2( 775, 75 )
 
 [node name="Colirio_4" parent="." instance=ExtResource( 4 )]
 
@@ -73,6 +73,14 @@ transform/pos = Vector2( 775, 1025 )
 [node name="player" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 882, 1382 )
+
+[node name="player" parent="player"]
+
+frame = 0
+
+[node name="Camera2D" parent="player"]
+
+current = false
 
 [connection signal="body_enter" from="Porta" to="player" method="_on_Porta_body_enter"]
 
@@ -87,3 +95,4 @@ transform/pos = Vector2( 882, 1382 )
 [connection signal="body_enter" from="Colirio_5" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_5" ]]
 
 
+[editable path="player"]
