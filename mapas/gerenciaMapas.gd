@@ -72,3 +72,6 @@ func quittar():
 		cena.queue_free()
 	cena = preload("res://menu/menu.tscn").instance()
 	get_tree().get_root().add_child(cena)
+
+func pausaMusicaMenu():
+	musicaMenu.stop()
