@@ -25,8 +25,8 @@ drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
 script/script = ExtResource( 1 )
-tempoFase = 15
-tempoVer = 2
+tempoFase = 20
+tempoVer = 4
 
 [node name="TileMap" type="TileMap" parent="."]
 
@@ -66,7 +66,7 @@ transform/pos = Vector2( 2275, 725 )
 
 [node name="Colirio_4" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 1125, 125 )
+transform/pos = Vector2( 725, 475 )
 
 [node name="Colirio_5" parent="." instance=ExtResource( 4 )]
 
@@ -87,6 +87,18 @@ transform/pos = Vector2( 2475, 2175 )
 [node name="Colirio_9" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 2875, 1875 )
+
+[node name="Colirio_10" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1275, 475 )
+
+[node name="Colirio_11" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1925, 575 )
+
+[node name="Colirio_12" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1525, 125 )
 
 [node name="player" parent="." instance=ExtResource( 5 )]
 
@@ -118,6 +130,12 @@ current = false
 [connection signal="body_enter" from="Colirio_8" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_8" ]]
 
 [connection signal="body_enter" from="Colirio_9" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_9" ]]
+
+[connection signal="body_enter" from="Colirio_10" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_10" ]]
+
+[connection signal="body_enter" from="Colirio_11" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_11" ]]
+
+[connection signal="body_enter" from="Colirio_12" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_12" ]]
 
 
 [editable path="player"]

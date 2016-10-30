@@ -26,7 +26,7 @@ drag_margin/right = 0.2
 drag_margin/bottom = 0.2
 script/script = ExtResource( 1 )
 tempoFase = 10
-tempoVer = 2
+tempoVer = 4
 
 [node name="TileMap" type="TileMap" parent="."]
 
@@ -80,10 +80,6 @@ transform/pos = Vector2( 1225, 1475 )
 
 transform/pos = Vector2( 532, 532 )
 
-[node name="player" parent="player"]
-
-frame = 3
-
 [node name="Camera2D" parent="player"]
 
 current = false
@@ -98,9 +94,9 @@ current = false
 
 [connection signal="body_enter" from="Colirio_5" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_5" ]]
 
-[connection signal="body_enter" from="Colirio_6" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_6" ]]
-
 [connection signal="body_enter" from="Colirio_6" to="." method="_on_Colirio_body_enter" binds= [ "Colirio_6" ]]
+
+[connection signal="body_enter" from="Colirio_6" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_6" ]]
 
 
 [editable path="player"]

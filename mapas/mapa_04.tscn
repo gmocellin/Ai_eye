@@ -26,7 +26,7 @@ drag_margin/right = 0.2
 drag_margin/bottom = 0.2
 script/script = ExtResource( 1 )
 tempoFase = 10
-tempoVer = 2
+tempoVer = 4
 
 [node name="TileMap" type="TileMap" parent="."]
 
@@ -75,6 +75,10 @@ transform/pos = Vector2( 775, 1025 )
 [node name="player" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 682, 1382 )
+
+[node name="player" parent="player"]
+
+frame = 1
 
 [node name="Camera2D" parent="player"]
 
