@@ -2,8 +2,8 @@ extends Node
 
 export var nomesFases = ['00', '02', '03', '04', '01']
 var fases = []
-var faseAtual
-var pontuacao
+var faseAtual = 0
+var pontuacao = 0
 var cena = null
 const nomeCenaFmt = "res://mapas/mapa_%s.tscn"
 
@@ -14,7 +14,7 @@ func _init():
 func comecaJogo():
 	faseAtual = 0
 	pontuacao = 0
-	gotoFase(0)
+	gotoFase(faseAtual)
 
 func getCenaAtual():
 	return fases[faseAtual].instance()
@@ -32,5 +32,5 @@ func _gotoFase(idx):
 
 func proximaFase():
 	pontuacao += 1
-	print('passei')
+	print('passei fase %s' % (nomesFases[faseAtual]))
 	gotoFase(faseAtual + 1)

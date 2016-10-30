@@ -1,9 +1,5 @@
-
 extends KinematicBody2D
 
-# member variables here, example:
-# var a=2
-# var b="textvar"
 
 const SPEED = 150
 
@@ -12,7 +8,6 @@ func _ready():
 	pass
 
 func _fixed_process(delta):
-	var velocity = Vector2()
 	var delta_mov = Vector2()
 	
 	if (Input.is_action_pressed("ui_up")):
@@ -31,7 +26,7 @@ func _fixed_process(delta):
 	if (is_colliding()):
 		var n = get_collision_normal()
 		delta_mov = n.slide(delta_mov)
-		velocity = n.slide(velocity)
+		var velocity = n.slide(Vector2())
 		move(delta_mov)
 
 func _on_Colirio_body_enter(body, nomeColir):
