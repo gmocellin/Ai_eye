@@ -26,7 +26,7 @@ drag_margin/right = 0.2
 drag_margin/bottom = 0.2
 script/script = ExtResource( 1 )
 tempoFase = 10
-tempoVer = 2
+tempoVer = 4
 
 [node name="TileMap" type="TileMap" parent="."]
 
@@ -96,8 +96,6 @@ current = false
 [connection signal="body_enter" from="Colirio_4" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_4" ]]
 
 [connection signal="body_enter" from="Colirio_5" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_5" ]]
-
-[connection signal="body_enter" from="Colirio_6" to="." method="_on_Colirio_body_enter" binds= [ "Colirio_6" ]]
 
 [connection signal="body_enter" from="Colirio_6" to="player" method="_on_Colirio_body_enter" binds= [ "Colirio_6" ]]
 
