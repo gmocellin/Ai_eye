@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://tema.thm" type="Theme" id=1]
+[ext_resource path="res://player/Pontos.tscn" type="PackedScene" id=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Panel\n\nconst arquivoSave = \"user://save.dat\"\nvar highscore\n\nfunc _ready():\n\tget_node(\"Pontos\").atualizaPontos()\n\thighscore = loadGame()\n\tprint (highscore)\n\nfunc loadGame():\n\tvar json = { \'placar\': [] }\n\tvar arq = File.new()\n\tif arq.file_exists(arquivoSave):\n\t\tarq.open(arquivoSave, arq.READ)\n\t\tjson.parse_json(arq.get_as_text())\n\t\tarq.close()\n\treturn json"
+
+[node name="Panel" type="Panel"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 1 )
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 800.0
+margin/bottom = 600.0
+script/script = SubResource( 1 )
+
+[node name="Pontos" parent="." instance=ExtResource( 2 )]
+
+margin/left = 50.0
+margin/top = 50.0
+margin/right = 200.0
+margin/bottom = 100.0
+
+

@@ -11,8 +11,8 @@ func _init():
 	for nome in nomesFases:
 		fases.append(ResourceLoader.load(nomeCenaFmt % nome))
 
-func comecaJogo():
-	faseAtual = 0
+func comecaJogo(fase = 0):
+	faseAtual = fase
 	pontuacao = 0
 	gotoFase(faseAtual)
 
@@ -38,6 +38,7 @@ func proximaFase():
 func perder():
 	if cena:
 		cena.free()
+	pontuacao -= 1
 	cena = preload("res://PERDEU/PERDEU.tscn").instance()
 	get_tree().get_root().add_child(cena)
 

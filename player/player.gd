@@ -1,11 +1,13 @@
 extends KinematicBody2D
 
-
 const SPEED = 150
 
 func _ready():
 	set_fixed_process(true)
-	pass
+	atualizaPontuacao()
+
+func atualizaPontuacao():
+	get_node("Pontos").atualizaPontos()
 
 func _fixed_process(delta):
 	var delta_mov = Vector2()
