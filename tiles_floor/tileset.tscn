@@ -544,31 +544,35 @@ _update_shape_index = 0
 
 [node name="Florzinha" type="Sprite" parent="."]
 
-transform/pos = Vector2( 74, 74 )
+transform/pos = Vector2( 75, 75 )
 texture = ExtResource( 18 )
+region = true
+region_rect = Rect2( 0, 0, 50, 50 )
 
 [node name="Folhinha" type="Sprite" parent="."]
 
 transform/pos = Vector2( 75, -25 )
-transform/scale = Vector2( 0.925926, 0.925926 )
 texture = ExtResource( 19 )
+region = true
+region_rect = Rect2( 0, 0, 50, 50 )
 
 [node name="Pedrinha" type="Sprite" parent="."]
 
 transform/pos = Vector2( 75, -225 )
-transform/scale = Vector2( 0.625, 0.625 )
 texture = ExtResource( 20 )
+region = true
+region_rect = Rect2( 0, 0, 50, 50 )
 
 [node name="Matinho" type="Sprite" parent="."]
 
 transform/pos = Vector2( 175, -225 )
-transform/scale = Vector2( 0.675676, 0.675676 )
 texture = ExtResource( 21 )
+region = true
+region_rect = Rect2( 0, 0, 50, 50 )
 
-[node name="Cogumelinhos" type="Sprite" parent="."]
+[node name="Cogumelo" type="Sprite" parent="."]
 
-transform/pos = Vector2( 79.4304, -120.57 )
-transform/scale = Vector2( 0.822785, 0.822785 )
+transform/pos = Vector2( 74.6835, -125.316 )
 texture = ExtResource( 22 )
 region = true
 region_rect = Rect2( 0, 0, 50, 50 )
