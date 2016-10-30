@@ -40,4 +40,4 @@ func _on_Colirio_body_enter(body, nomeColir):
 	colir.queue_free()
 	
 func _on_Porta_body_enter(body):
-	pass
+	get_node("/root/gerente").proximaFase()
