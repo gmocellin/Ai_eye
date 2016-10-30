@@ -41,7 +41,6 @@ transform/pos = Vector2( 0.205065, -1.96695e-06 )
 transform/scale = Vector2( 0.143211, 0.142045 )
 frames = SubResource( 2 )
 animation = "default"
-frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

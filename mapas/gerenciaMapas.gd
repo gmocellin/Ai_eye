@@ -6,6 +6,7 @@ var faseAtual = 0
 var pontuacao = 0
 var cena = null
 var passouFase = StreamPlayer.new()
+var musicaMenu = StreamPlayer.new()
 const nomeCenaFmt = "res://mapas/mapa_%s.tscn"
 
 func _init():
@@ -17,6 +18,10 @@ func _ready():
 	add_child(passouFase)
 	passouFase.set_stream(preload("res://sons/passarFaze.ogg"))
 	passouFase.set_volume_db(10)
+	add_child(musicaMenu)
+	musicaMenu.set_stream(preload("res://sons/musicamenu.ogg"))
+	musicaMenu.set_volume_db(10)
+	musicaMenu.play()
 	set_loop(true)
 	set_stream(preload("res://sons/compasso_musica.ogg"))
 
@@ -24,6 +29,7 @@ func comecaJogo(fase = 0):
 	faseAtual = fase
 	pontuacao = 0
 	play()
+	musicaMenu.stop()
 	cena = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1)
 	gotoFase(faseAtual)
 
@@ -61,6 +67,7 @@ func retentar():
 
 func quittar():
 	stop()
+	musicaMenu.play()
 	if cena:
 		cena.queue_free()
 	cena = preload("res://menu/menu.tscn").instance()
