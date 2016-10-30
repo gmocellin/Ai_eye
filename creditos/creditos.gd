@@ -32,4 +32,8 @@ func _input(event):
 		proximooo()
 
 func proximooo():
-	get_tree().change_scene("res://menu/menu.tscn")
+	if(atual == 0):
+		atual += 1
+		set_frame(atual)
+	else:
+		get_tree().change_scene("res://menu/menu.tscn")

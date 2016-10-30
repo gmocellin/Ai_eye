@@ -6,7 +6,7 @@
 
 [sub_resource type="GDScript" id=1]
 
-script/source = "extends Panel\n\n# bool pra mutar o jogo\nvar temSom = true\nvar botoes\nvar atual = 0\n\nfunc _ready():\n\tbotoes = [get_node(\"Iniciar\"), get_node(\"Placar\"), get_node(\"Som\")]\n\tset_process_input(true)\n\nfunc _on_Sair():\n\tget_tree().quit()\n\nfunc _input(event):\n\tif event.is_action_pressed(\"ui_up\") and atual > 0:\n\t\tatual -= 1\n\t\tbotoes[atual].emit_signal(\'mouse_enter\')\n\telif event.is_action_pressed(\"ui_down\") and atual < botoes.size() - 1:\n\t\tatual += 1\n\t\tbotoes[atual].emit_signal(\'mouse_enter\')\n\telif event.is_action_pressed(\"ui_accept\"):\n\t\tbotoes[atual].emit_signal(\'pressed\')\n\nfunc _on_Som():\n\ttemSom = not temSom\n\tAudioServer.set_stream_global_volume_scale(int (temSom))\n\tvar onoff\n\tif temSom:\n\t\tonoff = \'Ligado\'\n\telse:\n\t\tonoff = \'Desligado\'\n\tget_node(\"Som\").set_text(\"Som %s\" % onoff)\n\n\nfunc _on_Iniciar():\n\tget_node(\"/root/gerente\").comecaJogo()\n\nfunc _on_Creditos():\n\tget_tree().change_scene(\"res://creditos/Creditos.tscn\")\n"
+script/source = "extends Panel\n\n# bool pra mutar o jogo\nvar temSom = true\nvar botoes\nvar atual = 0\n\nfunc _ready():\n\tbotoes = [get_node(\"Iniciar\"), get_node(\"Placar\"), get_node(\"Som\")]\n\tset_process_input(true)\n\nfunc _on_Sair():\n\tget_tree().quit()\n\nfunc _input(event):\n\tif event.is_action_pressed(\"ui_up\") and atual > 0:\n\t\tatual -= 1\n\t\tbotoes[atual].emit_signal(\'mouse_enter\')\n\telif event.is_action_pressed(\"ui_down\") and atual < botoes.size() - 1:\n\t\tatual += 1\n\t\tbotoes[atual].emit_signal(\'mouse_enter\')\n\telif event.is_action_pressed(\"ui_accept\"):\n\t\tbotoes[atual].emit_signal(\'pressed\')\n\nfunc _on_Som():\n\ttemSom = not temSom\n\tAudioServer.set_stream_global_volume_scale(int (temSom))\n\tvar onoff\n\tif temSom:\n\t\tonoff = \'Ligado\'\n\telse:\n\t\tonoff = \'Desligado\'\n\tget_node(\"Som\").set_text(\"Som %s\" % onoff)\n\n\nfunc _on_Iniciar():\n\tget_node(\"/root/gerente\").comecaJogo()\n\nfunc _on_Creditos():\n\tget_tree().change_scene(\"res://creditos/Creditos.tscn\")\n\nfunc _on_Leveis():\n\tget_tree().change_scene(\"res://menu/Leveis.tscn\")"
 
 [node name="Menu" type="Panel"]
 
@@ -80,6 +80,22 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 550.0
+margin/right = 150.0
+margin/bottom = 600.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Som Ligado"
+flat = false
+
+[node name="Leveis" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
 margin/left = 350.0
 margin/top = 450.0
 margin/right = 500.0
@@ -87,7 +103,7 @@ margin/bottom = 500.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Som Ligado"
+text = "Leveis"
 flat = false
 
 [node name="Creditos" type="Button" parent="."]
@@ -129,6 +145,8 @@ transform/pos = Vector2( 300, 250 )
 [connection signal="mouse_exit" from="Som" to="Olhim" method="_on_mouse_exit"]
 
 [connection signal="pressed" from="Som" to="." method="_on_Som"]
+
+[connection signal="pressed" from="Leveis" to="." method="_on_Leveis"]
 
 [connection signal="pressed" from="Creditos" to="." method="_on_Creditos"]
 
