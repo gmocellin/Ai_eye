@@ -1,11 +1,12 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://tema.thm" type="Theme" id=1]
-[ext_resource path="res://player/Pontos.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GANHOU/parabéns.png" type="Texture" id=2]
+[ext_resource path="res://player/Pontos.tscn" type="PackedScene" id=3]
 
 [sub_resource type="GDScript" id=1]
 
-script/source = "extends Panel\n\nconst arquivoSave = \"user://save.dat\"\nvar highscore\n\nfunc _ready():\n\tget_node(\"Pontos\").atualizaPontos()\n\thighscore = loadGame()\n\tprint (highscore)\n\nfunc loadGame():\n\tvar json = { \'placar\': [] }\n\tvar arq = File.new()\n\tif arq.file_exists(arquivoSave):\n\t\tarq.open(arquivoSave, arq.READ)\n\t\tjson.parse_json(arq.get_as_text())\n\t\tarq.close()\n\treturn json"
+script/source = "extends Panel\n\nonready var arquivoSave = get_node(\"/root/save\").arquivoSave\nvar highscore\n\nfunc _ready():\n\tget_node(\"Pontos\").atualizaPontos()\n\thighscore = get_node(\"/root/save\").loadGame()\n\nfunc _on_Menu():\n\tget_tree().change_scene(\"res://menu/menu.tscn\")\n\nfunc _on_Salvar():\n\thighscore[\'placar\'].append([get_node(\"/root/gerente\").pontuacao, get_node(\"Nome\").get_text()])\n\thighscore[\'placar\'].sort_custom(self, \'arruma\')\n\tvar arq = File.new()\n\tarq.open(arquivoSave, arq.WRITE)\n\tarq.store_string(highscore.to_json())\n\tarq.close()\n\t_on_Menu()\n\nfunc arruma(a, b):\n\treturn a[0] > b[0]"
 
 [node name="Panel" type="Panel"]
 
@@ -20,11 +21,84 @@ margin/right = 800.0
 margin/bottom = 600.0
 script/script = SubResource( 1 )
 
-[node name="Pontos" parent="." instance=ExtResource( 2 )]
+[node name="Fundo" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Pontos" parent="." instance=ExtResource( 3 )]
 
 margin/left = 50.0
 margin/top = 50.0
 margin/right = 200.0
 margin/bottom = 100.0
+
+[node name="Nome" type="LineEdit" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 60.0
+margin/top = 201.0
+margin/right = 264.0
+margin/bottom = 225.0
+placeholder/text = "nome"
+placeholder/alpha = 0.6
+focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
+
+[node name="Label" type="Label" parent="."]
+
+rect/scale = Vector2( 1.5, 1.5 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 11.0
+margin/top = 158.0
+margin/right = 217.0
+margin/bottom = 182.0
+text = "Escreva seu nome, jovem"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Menu" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 600.0
+margin/top = 500.0
+margin/right = 700.0
+margin/bottom = 550.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Menu"
+flat = false
+
+[node name="Salvar" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 100.0
+margin/top = 500.0
+margin/right = 200.0
+margin/bottom = 550.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Salvar"
+flat = false
+
+[connection signal="pressed" from="Menu" to="." method="_on_Menu"]
+
+[connection signal="pressed" from="Salvar" to="." method="_on_Salvar"]
 
 

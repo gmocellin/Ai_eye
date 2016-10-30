@@ -24,10 +24,12 @@ func gotoFase(idx):
 
 func _gotoFase(idx):
 	faseAtual = idx
-	assert(faseAtual < fases.size())
 	if cena:
 		cena.free()
-	cena = getCenaAtual()
+	if faseAtual < fases.size():
+		cena = getCenaAtual()
+	else:
+		cena = preload("res://GANHOU/GANHOU.tscn").instance()
 	get_tree().get_root().add_child(cena)
 
 func proximaFase():
