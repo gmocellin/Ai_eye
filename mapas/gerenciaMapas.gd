@@ -61,3 +61,7 @@ func retentar():
 
 func quittar():
 	stop()
+	if cena:
+		cena.queue_free()
+	cena = preload("res://menu/menu.tscn").instance()
+	get_tree().get_root().add_child(cena)
