@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://tema.thm" type="Theme" id=1]
+[ext_resource path="res://PERDEU/PERDEU.png" type="Texture" id=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Panel\n\n\n\nfunc _on_Menu():\n\tget_tree().change_scene(\"res://menu/menu.tscn\")\n\n\nfunc _on_Tentar_novamente():\n\tget_node(\"/root/gerente\").retentar()\n"
+
+[node name="PERDEU" type="Panel"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 1 )
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+script/script = SubResource( 1 )
+
+[node name="Fundo" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Menu" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 550.0
+margin/top = 500.0
+margin/right = 750.0
+margin/bottom = 550.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Ir pro Menu"
+flat = false
+
+[node name="Tentar novamente" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 50.0
+margin/top = 500.0
+margin/right = 250.0
+margin/bottom = 550.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Tentar Novamente"
+flat = false
+
+[connection signal="pressed" from="Menu" to="." method="_on_Menu"]
+
+[connection signal="pressed" from="Tentar novamente" to="." method="_on_Tentar_novamente"]
+
+

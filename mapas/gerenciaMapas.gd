@@ -34,3 +34,12 @@ func proximaFase():
 	pontuacao += 1
 	print('passei fase %s' % (nomesFases[faseAtual]))
 	gotoFase(faseAtual + 1)
+
+func perder():
+	if cena:
+		cena.free()
+	cena = preload("res://PERDEU/PERDEU.tscn").instance()
+	get_tree().get_root().add_child(cena)
+
+func retentar():
+	gotoFase(faseAtual)
