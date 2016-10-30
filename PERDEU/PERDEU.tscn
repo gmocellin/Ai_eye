@@ -5,7 +5,7 @@
 
 [sub_resource type="GDScript" id=1]
 
-script/source = "extends Panel\n\n\n\nfunc _on_Menu():\n\tget_tree().change_scene(\"res://menu/menu.tscn\")\n\n\nfunc _on_Tentar_novamente():\n\tget_node(\"/root/gerente\").retentar()\n"
+script/source = "extends Panel\n\n\n\nfunc _on_Menu():\n\tget_node(\"/root/gerente\").quittar()\n\tget_tree().change_scene(\"res://menu/menu.tscn\")\n\n\nfunc _on_Tentar_novamente():\n\tget_node(\"/root/gerente\").retentar()\n"
 
 [node name="PERDEU" type="Panel"]
 

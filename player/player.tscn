@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/aye1.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://player/aye4.png" type="Texture" id=5]
 [ext_resource path="res://olhoFecha/OlhoFechando.tscn" type="PackedScene" id=6]
 [ext_resource path="res://player/Pontos.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sons/gotaCut.ogg" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -35,7 +36,7 @@ transform/pos = Vector2( 0.205065, -1.96695e-06 )
 transform/scale = Vector2( 0.143211, 0.142045 )
 frames = SubResource( 2 )
 animation = "default"
-frame = 2
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -70,5 +71,16 @@ drag_margin/right = 0.2
 drag_margin/bottom = 0.2
 
 [node name="Pontos" parent="." instance=ExtResource( 7 )]
+
+[node name="SomColirio" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 8 )
+stream/play = false
+stream/loop = false
+stream/volume_db = 0.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
 
 

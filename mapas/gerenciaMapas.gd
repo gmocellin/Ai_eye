@@ -1,4 +1,4 @@
-extends Node
+extends StreamPlayer
 
 export var nomesFases = ['00', '02', '03', '04', '01']
 var fases = []
@@ -11,9 +11,16 @@ func _init():
 	for nome in nomesFases:
 		fases.append(ResourceLoader.load(nomeCenaFmt % nome))
 
+func _ready():
+	set_volume_db(1)
+	set_loop(true)
+	set_stream(preload("res://sons/compasso_musica.ogg"))
+
 func comecaJogo(fase = 0):
 	faseAtual = fase
 	pontuacao = 0
+	play()
+	cena = get_tree().get_root().get_child(2)
 	gotoFase(faseAtual)
 
 func getCenaAtual():
@@ -29,12 +36,13 @@ func _gotoFase(idx):
 	if faseAtual < fases.size():
 		cena = getCenaAtual()
 	else:
+		stop()
 		cena = preload("res://GANHOU/GANHOU.tscn").instance()
 	get_tree().get_root().add_child(cena)
 
 func proximaFase():
 	pontuacao += 1
-	print('passei fase %s' % (nomesFases[faseAtual]))
+	#print('passei fase %s' % (nomesFases[faseAtual]))
 	gotoFase(faseAtual + 1)
 
 func perder():
@@ -46,3 +54,6 @@ func perder():
 
 func retentar():
 	gotoFase(faseAtual)
+
+func quittar():
+	stop()

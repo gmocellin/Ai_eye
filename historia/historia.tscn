@@ -8,7 +8,7 @@
 
 [sub_resource type="GDScript" id=1]
 
-script/source = "extends Node2D\n\nexport var tempos = [5, 10, 15, 20]\n# contadores do tempo e frame atual\nvar tempo = 0\nvar atual = 0\n\nfunc _ready():\n\tset_process(true)\n\tset_process_input(true)\n\nfunc _process(delta):\n\ttempo += delta\n\tif tempo > tempos[atual]:\n\t\tatual += 1\n\t\tget_node(\"Quadros\").set_frame(atual)\n\t\tif atual >= tempos.size():\n\t\t\tset_process(false)\n\nfunc _input(event):\n\tif event.is_pressed() and event.type in [InputEvent.KEY, InputEvent.MOUSE_BUTTON\n\t\t\t, InputEvent.JOYSTICK_BUTTON, InputEvent.SCREEN_TOUCH]:\n\t\tget_tree().change_scene(\"res://menu/menu.tscn\")"
+script/source = "extends Node2D\n\nexport var tempos = [5, 10, 15, 20]\n# contadores do tempo e frame atual\nvar tempo = 0\nvar atual = 0\n\nfunc _ready():\n\tset_process(true)\n\tset_process_input(true)\n\nfunc _process(delta):\n\ttempo += delta\n\tif tempo > tempos[atual]:\n\t\tatual += 1\n\t\tget_node(\"Quadros\").set_frame(atual)\n\t\tif atual >= tempos.size():\n\t\t\tset_process(false)\n\nfunc _input(event):\n\tif event.is_pressed() and event.type in [InputEvent.KEY, InputEvent.MOUSE_BUTTON\n\t\t\t, InputEvent.JOYSTICK_BUTTON, InputEvent.SCREEN_TOUCH]:\n\t\tget_node(\"/root/gerente\").comecaJogo()"
 
 [sub_resource type="SpriteFrames" id=2]
 
